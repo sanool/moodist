@@ -1,0 +1,174 @@
+---
+---
+
+<div id="cookieConsent" class="cookie-consent">
+  <div class="cookie-container">
+    <div class="cookie-content">
+      <div class="cookie-text">
+        <h2>Cookie Notice</h2>
+        <p>
+          We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
+        </p>
+      </div>
+      <div class="cookie-buttons">
+        <button id="declineCookies" class="btn-decline">
+          Decline
+        </button>
+        <button id="acceptCookies" class="btn-accept">
+          Accept
+        </button>
+      </div>
+      <button id="closeCookieBanner" class="btn-close" aria-label="Close cookie banner">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+    .cookie-consent {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    .cookie-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    .cookie-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .cookie-content {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .cookie-text {
+        flex: 1;
+    }
+
+    .cookie-text h2 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .cookie-text p {
+        color: #666;
+        margin: 0;
+    }
+
+    .cookie-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-width: fit-content;
+    }
+
+    @media (min-width: 640px) {
+        .cookie-buttons {
+            flex-direction: row;
+        }
+    }
+
+    .btn-decline,
+    .btn-accept {
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn-decline {
+        background: white;
+        border: 1px solid #ddd;
+    }
+
+    .btn-decline:hover {
+        background: #f5f5f5;
+    }
+
+    .btn-accept {
+        background: #2563eb;
+        color: white;
+        border: none;
+    }
+
+    .btn-accept:hover {
+        background: #1d4ed8;
+    }
+
+    .btn-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background: none;
+        border: none;
+        padding: 0.25rem;
+        cursor: pointer;
+        color: #666;
+    }
+
+    .btn-close:hover {
+        color: #333;
+    }
+</style>
+
+<script>
+  const cookieConsent = document.getElementById('cookieConsent');
+  const acceptButton = document.getElementById('acceptCookies');
+  const declineButton = document.getElementById('declineCookies');
+  const closeButton = document.getElementById('closeCookieBanner');
+
+  // 检查是否已经有cookie设置
+  const hasConsent = localStorage.getItem('cookieConsent');
+
+  // 如果没有同意记录，显示banner
+  if (!hasConsent && cookieConsent) {
+    cookieConsent.style.display = 'block';
+  }
+
+  // 接受cookies
+  acceptButton?.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'accepted');
+    if (cookieConsent) {
+      cookieConsent.style.display = 'none';
+    }
+    // 这里可以添加启用分析等代码
+  });
+
+  // 拒绝cookies
+  declineButton?.addEventListener('click', () => {
+    localStorage.setItem('cookieConsent', 'declined');
+    if (cookieConsent) {
+      cookieConsent.style.display = 'none';
+    }
+    // 这里可以添加禁用非必要cookies的代码
+  });
+
+  // 关闭banner
+  closeButton?.addEventListener('click', () => {
+    if (cookieConsent) {
+      cookieConsent.style.display = 'none';
+    }
+  });
+</script>

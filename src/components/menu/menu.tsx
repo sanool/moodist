@@ -116,15 +116,15 @@ export function Menu() {
                       open={() => open('breathingExercise')}
                     />
                     <PomodoroItem open={() => open('pomodoro')} />
-                    <NotepadItem open={() => open('notepad')} />
-                    <CountdownTimerItem />
+                    {/*<NotepadItem open={() => open('notepad')} />*/}
+                    {/*<CountdownTimerItem />*/}
 
-                    <Divider />
-                    <ShortcutsItem open={() => open('shortcuts')} />
+                    {/*<Divider />*/}
+                    {/*<ShortcutsItem open={() => open('shortcuts')} />*/}
 
-                    <Divider />
-                    <DonateItem />
-                    <SourceItem />
+                    {/*<Divider />*/}
+                    {/*<DonateItem />*/}
+                    {/*<SourceItem />*/}
                   </motion.div>
                 </DropdownMenu.Content>
               </DropdownMenu.Portal>
